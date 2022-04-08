@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021, Oracle and/or its affiliates.
+ * Copyright (c) 2022, Oracle and/or its affiliates.
  * Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
  */
 
@@ -18,7 +18,7 @@ const { publicRuntimeConfig } = getConfig();
  * @param category the category of the items to display
  * @param itemsThumbnailURLMap map of itemID to thumbnail URL
  */
-const Gallery = (props) => {
+function Gallery(props) {
   const { category } = props;
   const {
     id, name, items, totalResults,
@@ -77,7 +77,7 @@ const Gallery = (props) => {
       </Link>
     </section>
   );
-};
+}
 
 Gallery.propTypes = {
   category: PropTypes.shape({

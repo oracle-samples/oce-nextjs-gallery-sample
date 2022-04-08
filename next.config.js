@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021, Oracle and/or its affiliates.
+ * Copyright (c) 2022, Oracle and/or its affiliates.
  * Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
  */
 /*
@@ -12,6 +12,10 @@
 // we are using this so that when the application is accessed through a reverse
 // proxy to add a base path the images are still loaded correctly
 const withImages = require('next-images');
+const sdkPackage = require('./node_modules/@oracle/content-management-sdk/package.json');
+
+const BUILD_TAG = process.env.BUILD_TAG || 'none';
+const SDK_VERSION = sdkPackage.version;
 
 /*
  * Gets the BASE_URL from the command used to start this app.
@@ -57,15 +61,11 @@ module.exports = withImages({
   // make server environment variables accessible in the app even in the client bundle
   // variables with the prefix NEXT_PUBLIC_ will be available in the browser application
   env: {
+    NEXT_PUBLIC_BUILD_TAG: BUILD_TAG,
+    NEXT_PUBLIC_SDK_VERSION: SDK_VERSION,
     NEXT_PUBLIC_SERVER_URL: process.env.SERVER_URL,
     NEXT_PUBLIC_API_VERSION: process.env.API_VERSION,
     NEXT_PUBLIC_CHANNEL_TOKEN: process.env.CHANNEL_TOKEN,
-    NEXT_PUBLIC_AUTH: process.env.AUTH,
-    NEXT_PUBLIC_PREVIEW: process.env.PREVIEW,
-    NEXT_PUBLIC_CLIENT_ID: process.env.CLIENT_ID,
-    NEXT_PUBLIC_CLIENT_SECRET: process.env.CLIENT_SECRET,
-    NEXT_PUBLIC_CLIENT_SCOPE_URL: process.env.CLIENT_SCOPE_URL,
-    NEXT_PUBLIC_IDCS_URL: process.env.IDCS_URL,
   },
 
   // Add webpack exclusions to to allow it to integrate https-proxy-agent in non server context

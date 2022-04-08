@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021, Oracle and/or its affiliates.
+ * Copyright (c) 2022, Oracle and/or its affiliates.
  * Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
  */
 import React from 'react';
@@ -20,6 +20,7 @@ export default function Index({ data }) {
         <title>Image Gallery</title>
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <meta name="description" content="Sample Gallery app created in NextJs that utilizes the content sdk library" />
+        <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <div>
         <h1 className="heading">Image Gallery</h1>

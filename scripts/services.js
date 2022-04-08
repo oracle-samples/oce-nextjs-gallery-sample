@@ -1,11 +1,10 @@
 /**
- * Copyright (c) 2021, Oracle and/or its affiliates.
+ * Copyright (c) 2022, Oracle and/or its affiliates.
  * Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
  */
 /* eslint-disable no-param-reassign */
 
 import getClient from './server-config-utils';
-import getImageUrl from './utils';
 
 /**
  * This file contains a number of utility methods used to obtain data
@@ -58,7 +57,7 @@ function addRendition(urls, rendition, formatstr) {
   // Get the webp format field
   const format = rendition.formats.filter((item) => item.format === `${formatstr}`)[0];
   const self = format.links.filter((item) => item.rel === 'self')[0];
-  const url = getImageUrl(self.href);
+  const url = self.href;
   const { width } = format.metadata;
 
   // Also save the jpg format so that it can be used as a default value for images
